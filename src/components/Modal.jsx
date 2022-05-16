@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import CerrarBtn from '../img/cerrar.svg'
-import Message from '../Message';
-
-
-
+import Message from './Message';
 
 const modal = ({setModal, animateModal, setAnimateModal, saveExpense}) => {
 
@@ -75,7 +72,7 @@ const modal = ({setModal, animateModal, setAnimateModal, saveExpense}) => {
 
           <div className='campo'>
             <label htmlFor="category">Category</label>
-            <select id="category" value={typeAmount} onChange={e => setTypeExpense(e.target.value)}>
+            <select id="category" value={typeExpense} onChange={e => setTypeExpense(e.target.value)}>
               <option>Select</option>
               <option>Save money</option>
               <option>Food</option>
