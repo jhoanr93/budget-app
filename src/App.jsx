@@ -11,7 +11,7 @@ function App() {
   const [isValidBudget, setIsValidBudget] = useState(false);
   const [modal, setModal] = useState(false);
   const [animateModal, setAnimateModal] = useState(false);
-  const [expense, setExpense] = useState([]);
+  const [expenses, setExpenses] = useState([]);
 
   const handleNewExpense = () => {
     setModal(true)
@@ -22,9 +22,9 @@ function App() {
   }
 
   const saveExpense = expenseIn =>{
-    expense.id = generateId();
-    expense.date = Date.now();
-    setExpense([...expense, expenseIn])
+    expenses.id = generateId();
+    expenses.date = Date.now();
+    setExpenses([...expenses, expenseIn])
 
     setModal(false)
 
@@ -35,7 +35,7 @@ function App() {
 
 
   return (
-    <div>
+    <div className={modal ? 'fijar': ''}>
       <Header
         budget={budget}
         setBudget={setBudget}
@@ -46,7 +46,7 @@ function App() {
       {isValidBudget && (
           <>
           <main>
-            <ExpensesList expense={expense}></ExpensesList>
+            <ExpensesList expense={expenses}></ExpensesList>
           </main>
           <div className='nuevo-gasto'>
           <img src={IconNewExpense}

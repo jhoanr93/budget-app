@@ -73,14 +73,14 @@ const modal = ({setModal, animateModal, setAnimateModal, saveExpense}) => {
           <div className='campo'>
             <label htmlFor="category">Category</label>
             <select id="category" value={typeExpense} onChange={e => setTypeExpense(e.target.value)}>
-              <option>Select</option>
-              <option>Save money</option>
-              <option>Food</option>
-              <option>Home</option>
-              <option>Diferent expense</option>
-              <option>Hobbies</option>
-              <option>Health</option>
-              <option>Suscriptions</option>
+              <option value="">Select</option>
+              <option value="saveMoney">Save money</option>
+              <option value="food">Food</option>
+              <option value="home">Home</option>
+              <option value="expenses">Diferent expense</option>
+              <option value="hobbies">Hobbies</option>
+              <option value="health">Health</option>
+              <option value="suscriptions">Suscriptions</option>
             </select>
           </div>
 

@@ -1,14 +1,14 @@
 import React from 'react'
 import Expense from './Expense'
 
-export const ExpensesList = ({expense}) => {
+export const ExpensesList = ({expenses}) => {
   return (
     <div className='listado-gastos contenedor'>
         <h2>
-            {expense.length ? 'Expenses' : 'No expenses yet'} 
+            {expenses.length ? 'Expenses' : 'No expenses yet'} 
         </h2>
-        {expense.map(expense =>{
-            <Expense key={expense.id} expense={expense} ></Expense>
+        {expenses.map(expenseIn =>{
+            <Expense key={expenses.id} expense={expenseIn} ></Expense>
 
         })}
         </div>
