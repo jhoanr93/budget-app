@@ -5,6 +5,7 @@ const NewBudget = ({budget, setBudget, setIsValidBudget}) => {
 
     const [message, setMessage] = useState('');
     
+    
 
     const handleBudget = (e) =>{
         e.preventDefault();
@@ -25,7 +26,7 @@ const NewBudget = ({budget, setBudget, setIsValidBudget}) => {
 
           <input className="nuevo-presupuesto"
            type="number"
-           placeholder="Add your budget"
+           placeholder="Add your budget"           
            value={budget}
            onChange={ e => setBudget(Number(e.target.value))}/>
         </div>

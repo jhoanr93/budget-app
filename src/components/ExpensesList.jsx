@@ -7,10 +7,12 @@ export const ExpensesList = ({expenses}) => {
         <h2>
             {expenses.length ? 'Expenses' : 'No expenses yet'} 
         </h2>
-        {expenses.map(expenseIn =>{
-            <Expense key={expenses.id} expense={expenseIn} ></Expense>
-
-        })}
+        {expenses.map(expenseIn => (
+          <Expense
+            key = {expenseIn.id}
+            expenseIn = {expenseIn}
+          ></Expense>
+          ))}
         </div>
   )
 }

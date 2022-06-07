@@ -19,17 +19,17 @@ const diccionarioIconos = {
             suscriptions: IconoSuscripciones
 }
 
-const Expense = () => {
-    const {category, name, amount, id, date } = expense;
+const Expense = ({expenseIn}) => {
+    const {typeExpense, name, amount, id, date } = expenseIn;
   return (
     <div className='gasto sombra'>
         <div className='contenido-gasto'>
-            <img src={diccionarioIconos[category]}>
+            <img src={diccionarioIconos[typeExpense]}>
             
             </img>
             <div className='descripcion-gasto'>
                 <p className='categoria'>
-                    {category}
+                    {typeExpense}
                 </p>
                 <p className='nombre-gasto'>{name}</p>
                 <p className='fecha-gasto'>
@@ -43,4 +43,4 @@ const Expense = () => {
   )
 }
 
-export default Expense
+export default Expense;

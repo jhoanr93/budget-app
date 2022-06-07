@@ -37,6 +37,7 @@ function App() {
   return (
     <div className={modal ? 'fijar': ''}>
       <Header
+        expenses = {expenses}
         budget={budget}
         setBudget={setBudget}
         isValidBudget={isValidBudget}
@@ -46,7 +47,7 @@ function App() {
       {isValidBudget && (
           <>
           <main>
-            <ExpensesList expense={expenses}></ExpensesList>
+            <ExpensesList expenses={expenses}></ExpensesList>
           </main>
           <div className='nuevo-gasto'>
           <img src={IconNewExpense}

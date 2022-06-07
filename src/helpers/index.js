@@ -12,5 +12,5 @@ export const formatDate = date =>{
         day: '2-digit',
     }
 
-    return newDate.toLocaleDatetring('es-ES', options);
+    return newDate.toLocaleDateString('es-ES', options);
 }
