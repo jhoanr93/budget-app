@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import Modal from './components/Modal'
 import ExpensesList from './components/ExpensesList'
@@ -13,12 +13,28 @@ function App() {
   const [animateModal, setAnimateModal] = useState(false);
   const [expenses, setExpenses] = useState([]);
 
-  const handleNewExpense = () => {
-    setModal(true)
+  const [editExpense, setEditExpense] = useState({});
+
+  useEffect(()=>{
+    if(Object.keys(editExpense).length > 0){
+      setModal(true)
+      
+    
 
     setTimeout(()=> {
       setAnimateModal(true)
     }, 500);
+    }
+  }, [ editExpense ])
+
+  const handleNewExpense = () => {
+    setModal(true)
+    setEditExpense({})
+
+    setTimeout(()=> {
+      setAnimateModal(true)
+    }, 500);
+    
   }
 
   const saveExpense = expenseIn =>{
@@ -47,7 +63,11 @@ function App() {
       {isValidBudget && (
           <>
           <main>
-            <ExpensesList expenses={expenses}></ExpensesList>
+            <ExpensesList
+             expenses={expenses}
+             setEditExpense={setEditExpense}
+            
+            ></ExpensesList>
           </main>
           <div className='nuevo-gasto'>
           <img src={IconNewExpense}
@@ -60,7 +80,8 @@ function App() {
       {modal && <Modal setModal={setModal}
                        animateModal={animateModal}
                        setAnimateModal={setAnimateModal}
-                       saveExpense = {saveExpense}/>}
+                       saveExpense = {saveExpense}
+                       editExpense = {editExpense}/>}
       
     </div>
 

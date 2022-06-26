@@ -1,13 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CerrarBtn from '../img/cerrar.svg'
 import Message from './Message';
 
-const modal = ({setModal, animateModal, setAnimateModal, saveExpense}) => {
+const modal = ({
+  setModal,
+  animateModal,
+  setAnimateModal,
+  saveExpense,
+  editExpense}) => {
 
   const [name, setName] = useState('');
   const [amount, setAmount] = useState('');
   const [typeExpense, setTypeExpense] = useState('');
   const [message, setMessage] = ('');
+
+  useEffect(()=>{
+      if( Object.keys(editExpense).length > 0){
+        setName(editExpense.name)
+        setAmount(editExpense.amount)
+        setTypeExpense(editExpense.typeExpense)
+      }
+  },[])
 
   const hideModal = () => {
       
