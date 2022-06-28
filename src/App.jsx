@@ -37,13 +37,24 @@ function App() {
     
   }
 
+  const deleteExpense = id => {
+      const currentExpenses = expenses.filter(expenseIn => expenseIn.id !== id);
+      setExpenses(currentExpenses);
+  }
+
   const saveExpense = expenseIn =>{
-    expenses.id = generateId();
-    expenses.date = Date.now();
-    setExpenses([...expenses, expenseIn])
 
+    if(expenseIn.id){
+      const currentExpenses = expenses.map( expenseState => expenseState.id ===
+        expenseIn.id ? expenseIn: expenseState)
+        setExpenses(currentExpenses);
+        setEditExpense({})
+    }else{
+      expenses.id = generateId();
+      expenses.date = Date.now();
+      setExpenses([...expenses, expenseIn])
+    }
     setModal(false)
-
     setTimeout(()=> {
       setAnimateModal(false)
     }, 500);
@@ -66,7 +77,7 @@ function App() {
             <ExpensesList
              expenses={expenses}
              setEditExpense={setEditExpense}
-            
+            deleteExpense={deleteExpense}
             ></ExpensesList>
           </main>
           <div className='nuevo-gasto'>
@@ -81,7 +92,8 @@ function App() {
                        animateModal={animateModal}
                        setAnimateModal={setAnimateModal}
                        saveExpense = {saveExpense}
-                       editExpense = {editExpense}/>}
+                       editExpense = {editExpense}
+                       setEditExpense={setEditExpense}/>}
       
     </div>
 

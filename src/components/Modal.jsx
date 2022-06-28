@@ -7,24 +7,32 @@ const modal = ({
   animateModal,
   setAnimateModal,
   saveExpense,
-  editExpense}) => {
+  editExpense, 
+  setEditExpense}) => {
 
+  const [message, setMessage] = ('');
   const [name, setName] = useState('');
   const [amount, setAmount] = useState('');
   const [typeExpense, setTypeExpense] = useState('');
-  const [message, setMessage] = ('');
+  const [id, setId] = useState('');
+  const [date, setDate] = useState('');
+  
+  
 
   useEffect(()=>{
       if( Object.keys(editExpense).length > 0){
         setName(editExpense.name)
         setAmount(editExpense.amount)
         setTypeExpense(editExpense.typeExpense)
+        setId(editExpense.id)
+        setDate(editExpense.date)
       }
   },[])
 
   const hideModal = () => {
       
       setAnimateModal(false);
+      setEditExpense({});
 
       setTimeout(()=>{
         setModal(false);
@@ -44,7 +52,7 @@ const modal = ({
       return;
     }
 
-    saveExpense({name, amount, typeExpense})
+    saveExpense({name, amount, typeExpense, id, date})
   } 
 
   return (
@@ -58,7 +66,7 @@ const modal = ({
         </div>
 
         <form onSubmit={handleSubmit} className={`formulario ${animateModal ? "animar" : 'cerrar'}`}>
-          <legend>New Expense</legend>
+          <legend>{editExpense.name ? 'Edit expense' : 'New Expense'}</legend>
           {message && <Message tipo={error}>{message}</Message>}
 
           <div className='campo'>
@@ -97,7 +105,10 @@ const modal = ({
             </select>
           </div>
 
-          <input type="submit" value="Add expense" />
+          <input
+           type="submit"
+           value={editExpense.name ? 'Save changes' : 'Add Expense'}
+           />
 
 
         </form>
